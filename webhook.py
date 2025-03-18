@@ -3,8 +3,8 @@ import telegram
 import os
 from dotenv import load_dotenv
 
-# ✅ Load environment variables from .env file
-load_dotenv(dotenv_path=".env")  # Ensure it loads from the correct location
+# ✅ Load environment variables (no need for dotenv path)
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -18,9 +18,9 @@ print(f"ADMIN_CHAT_ID: {ADMIN_CHAT_ID}") if ADMIN_CHAT_ID else print("❌ ADMIN_
 
 # ✅ Validate that tokens are set
 if not BOT_TOKEN:
-    raise ValueError("❌ BOT_TOKEN is missing! Set it in your .env file.")
+    raise ValueError("❌ BOT_TOKEN is missing! Set it as an environment variable in Render.")
 if not ADMIN_CHAT_ID:
-    raise ValueError("❌ ADMIN_CHAT_ID is missing! Set it in your .env file.")
+    raise ValueError("❌ ADMIN_CHAT_ID is missing! Set it as an environment variable in Render.")
 
 # ✅ Initialize Telegram bot
 bot = telegram.Bot(token=BOT_TOKEN)
